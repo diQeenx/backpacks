@@ -18,3 +18,7 @@ Auth::routes();
 Route::get('/', function () {
    return view('home');
 });
+
+Route::get('/account', function () {
+   return view('user.account');
+})->name('account');

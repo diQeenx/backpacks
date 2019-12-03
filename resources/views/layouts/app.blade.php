@@ -161,7 +161,7 @@
                             @guest
                                 <a href="{{ route('login') }}"><i class="icon-user icons"></i></a>
                             @else
-                                <a href=""><i class="icon-user icons"></i></a>
+                                <a href="{{ route('account') }}"><i class="icon-user icons"></i></a>
                             @endguest
                         </div>
                         <div class="header-cart same-style">
