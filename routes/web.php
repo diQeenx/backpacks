@@ -15,10 +15,9 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-   return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/account', function () {
-   return view('user.account');
-})->name('account');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/account', 'AccountController@index')->name('account');
+    Route::post('/account', 'AccountController@edit')->name('account.edit');
+});

@@ -32,22 +32,15 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
                     <div class="logo pt-39">
-                        <a href="index.html"><img alt="" src="{{ asset('img/logo/logo.png') }}"></a>
+                        <a href="{{ route('home') }}"><img alt="" src="{{ asset('img/logo/logo.png') }}"></a>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-7 d-none d-lg-block">
                     <div class="main-menu text-center">
                         <nav>
                             <ul>
-                                <li><a href="index.html">HOME</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="index.html">home version 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-2.html">home version 2</a>
-                                        </li>
-                                    </ul>
+                                <li>
+                                    <a href="{{ route('home') }}">Главная</a>
                                 </li>
                                 <li class="mega-menu-position"><a href="shop-page.html">Food</a>
                                     <ul class="mega-menu">

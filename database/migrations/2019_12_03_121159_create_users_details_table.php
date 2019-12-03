@@ -15,7 +15,7 @@ class CreateUsersDetailsTable extends Migration
     {
         Schema::create('users_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->unique();
             $table->string('first_name', 20);
             $table->string('last_name', 30);
             $table->string('phone')->nullable();
