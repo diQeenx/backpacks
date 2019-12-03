@@ -5,10 +5,12 @@
         <div class="container">
             <div class="breadcrumb-content text-center">
                 <h2>My Account</h2>
-                <ul>
-                    <li><a href="index.html">home</a></li>
-                    <li class="active">My Account</li>
-                </ul>
+                <h3>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                </h3>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </div>
     </div>

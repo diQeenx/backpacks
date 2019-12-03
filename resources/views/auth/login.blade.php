@@ -22,12 +22,14 @@
                                         <form method="POST" action="{{ route('login') }}">
                                             @csrf
 
-                                            <input type="text" class="{{ $errors->has('username') ? ' is-invalid' : '' }}" id="username" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
-                                            @if ($errors->has('username'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('username') }}</strong>
-                                                </span>
-                                            @endif
+                                            <div>
+                                                @if ($errors->has('email'))
+                                                    <span class="" role="alert">
+                                                        <strong>{{ $errors->first() }}</strong>
+                                                    </span>
+                                                @endif
+                                                <input type="text" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                                            </div>
 
                                             <input type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
                                             @if ($errors->has('password'))
