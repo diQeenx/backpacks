@@ -17,7 +17,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['namespace' => 'User'], function () {
     Route::get('/account', 'AccountController@index')->name('account');
     Route::post('/account', 'AccountController@edit')->name('account.edit');
 });
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('index', 'AdminController@index')->name('admin.index');
+});
+
+

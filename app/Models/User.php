@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -31,5 +31,20 @@ class User extends Authenticatable
     public function detail()
     {
         return $this->hasOne(UsersDetail::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role()->where('name', 'admin')->exists();
+    }
+
+    public function isUser()
+    {
+        return $this->role()->where('name', 'user')->exists();
     }
 }

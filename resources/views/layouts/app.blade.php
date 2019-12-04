@@ -153,7 +153,9 @@
                         <div class="header-login same-style">
                             @guest
                                 <a href="{{ route('login') }}"><i class="icon-user icons"></i></a>
-                            @else
+                            @elseif (\Auth::user()->isAdmin())
+                                <a href="{{ route('admin.index') }}"><i class="icon-user icons"></i></a>
+                            @elseif (!(\Auth::user()->isAdmin()))
                                 <a href="{{ route('account') }}"><i class="icon-user icons"></i></a>
                             @endguest
                         </div>

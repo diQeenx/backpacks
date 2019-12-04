@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Http\Requests\UserPersonalDetails;
-use App\UsersDetail;
+use App\Models\UsersDetail;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class AccountController extends UserBaseController
 {
     public function index()
     {
@@ -17,14 +17,15 @@ class AccountController extends Controller
     public function edit(UserPersonalDetails $request)
     {
         $data = $request->except('_token');
+
         $data['user_id'] = \Auth::user()->id;
 
-        if ($detail = UsersDetail::find($data['user_id'])) {
+        if ($detail = UsersDetail::where('user_id', $data['user_id'])) {
             $detail->update($data);
-            return redirect()->back();
+            return back();
         }
 
         (new UsersDetail($data))->save();
-        return redirect()->back();
+        return back();
     }
 }
