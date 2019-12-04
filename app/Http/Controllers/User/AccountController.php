@@ -20,8 +20,8 @@ class AccountController extends UserBaseController
 
         $data['user_id'] = \Auth::user()->id;
 
-        if ($detail = UsersDetail::where('user_id', $data['user_id'])) {
-            $detail->update($data);
+        if (UsersDetail::where('user_id', $data['user_id'])->exists()) {
+            UsersDetail::where('user_id', $data['user_id'])->update($data);
             return back();
         }
 

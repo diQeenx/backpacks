@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Role;
+use App\Models\Product\Brand;
 
-class RolesTableSeeder extends Seeder
+class BrandsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,18 @@ class RolesTableSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'name' => 'admin'
+                'name' => 'Asics',
+                'image' => 'img/product/brands/asics.png',
             ],
             [
                 'id' => 2,
-                'name' => 'user'
+                'name' => 'SwissGear',
+                'image' => 'img/product/brands/swissgear.png',
             ]
         ];
 
         foreach ($data as $item) {
-            (new Role($item))->save();
+            (new Brand($item))->save();
         }
     }
 }

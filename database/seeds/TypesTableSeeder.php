@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Role;
+use App\Models\Product\Type;
 
-class RolesTableSeeder extends Seeder
+class TypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,16 @@ class RolesTableSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'name' => 'admin'
+                'name' => 'Туристический',
             ],
             [
                 'id' => 2,
-                'name' => 'user'
+                'name' => 'Универсальный',
             ]
         ];
 
         foreach ($data as $item) {
-            (new Role($item))->save();
+            (new Type($item))->save();
         }
     }
 }

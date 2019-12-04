@@ -1,9 +1,9 @@
 <?php
 
+use App\Models\Product\Color;
 use Illuminate\Database\Seeder;
-use App\Models\Role;
 
-class RolesTableSeeder extends Seeder
+class ColorsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,18 @@ class RolesTableSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'name' => 'admin'
+                'name' => 'Черный',
+                'value' => 'black'
             ],
             [
                 'id' => 2,
-                'name' => 'user'
+                'name' => 'Белый',
+                'value' => 'white'
             ]
         ];
 
         foreach ($data as $item) {
-            (new Role($item))->save();
+            (new Color($item))->save();
         }
     }
 }
