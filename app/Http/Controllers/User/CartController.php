@@ -5,10 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Models\Cart\CartDetail;
 use App\Models\Product\Product;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class CartController extends UserBaseController
 {
     public function add(Request $request)
     {

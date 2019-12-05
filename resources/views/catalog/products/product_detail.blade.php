@@ -34,7 +34,11 @@
                             <span class="new">{{ $product->price }} BYN</span>
                         </div>
                         <div class="in-stock">
-                            <span><i class="ion-android-checkbox-outline"></i> In Stock</span>
+                            @if($product->details->sum('count') === 0)
+                                <span><i class="ion-android-checkbox-outline"></i>Нет в наличии</span>
+                            @else
+                                <span><i class="ion-android-checkbox-outline"></i>В наличии</span>
+                            @endif
                         </div>
                         <p>{{ $product->description ?? 'Рюкзак '.$product->type->name.', '.$product->category->name.'. '.$product->size.' см'}}</p>
                         <form id="addtocart" method="POST" action="{{ route('cart.add') }}">

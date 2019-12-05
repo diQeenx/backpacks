@@ -27,10 +27,14 @@ class UserPersonalDetails extends FormRequest
             'first_name' => 'required|string|max:20',
             'last_name' => 'required|string|max:30',
             'phone' => ['nullable','regex:/^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/'],
-            'address' => 'nullable|string',
+            'country_id' => ['nullable|numeric', 'exists:countries, id'],
+            'city' => 'nullable|string|max:30',
+            'address' => 'required|string',
             'zip_code' => ['nullable','regex:/^\d{6}$/'],
-            'card_number' => ['nullable','regex:/^(\d{4}\-\d{4}\-\d{4}\-\d{4})$/'],
-            'expiration_date' => ['nullable','regex:/^(0[1-9]|1[012])[- \/.](19|20)\d\d$/']
+            'card_id' => ['required|numeric', 'exists:cards, id'],
+            'card_number' => ['required','regex:/^(\d{4}\-\d{4}\-\d{4}\-\d{4})$/'],
+            'month' => ['required','date_format: m'],
+            'year' => ['required', 'date_format: Y']
         ];
     }
 }

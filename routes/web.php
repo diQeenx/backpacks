@@ -23,8 +23,11 @@ Route::group(['namespace' => 'Catalog'], function () {
 });
 
 Route::group(['namespace' => 'User'], function () {
-    Route::get('account', 'AccountController@index')->name('account');
-    Route::post('account', 'AccountController@edit')->name('account.edit');
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/', 'AccountController@index')->name('account');
+        Route::post('/', 'AccountController@edit')->name('account.edit');
+        Route::get('cart', 'AccountController@cart')->name('account.cart');
+    });
     Route::post('cart', 'CartController@add')->name('cart.add');
     Route::post('cart/{id}', 'CartController@delete')->name('cart.delete');
 });

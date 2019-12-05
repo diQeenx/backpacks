@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Requests\UserPersonalDetails;
+use App\Models\Card;
+use App\Models\Country;
+use App\Models\Product\Category;
 use App\Models\UsersDetail;
 use Illuminate\Http\Request;
 
@@ -11,12 +14,18 @@ class AccountController extends UserBaseController
     public function index()
     {
         $user = \Auth::user();
-        return view('user.account', compact('user'));
+        $countries = Country::all();
+        $cards = Card::all();
+        return view('user.forms.__personal', ['user' => $user, 'countries' => $countries, 'cards' => $cards]);
     }
 
     public function edit(UserPersonalDetails $request)
     {
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'month', 'year');
+
+        if (isset($request->month) && isset($request->year)) {
+            $data['expiration_date'] = "{$request->month}/{$request->year}";
+        }
 
         $data['user_id'] = \Auth::user()->id;
 
@@ -32,7 +41,10 @@ class AccountController extends UserBaseController
     public function addToCart(Request $request)
     {
         $data = $request->all();
+    }
 
-
+    public function cart()
+    {
+        return view('user.forms.__cart');
     }
 }

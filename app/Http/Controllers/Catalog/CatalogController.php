@@ -11,15 +11,32 @@ use App\Http\Controllers\Controller;
 
 class CatalogController extends Controller
 {
+    private $categories = [];
+    private $types = [];
+    private $brands = [];
+    private $products = [];
+    private $data = [];
+
+    public function __construct()
+    {
+        $this->categories = Category::all();
+        $this->types = Type::all();
+        $this->brands = Brand::all();
+        $this->products = Product::paginate(9);
+
+        $this->data = [
+            'categories' => $this->categories,
+            'types' => $this->types,
+            'brands' => $this->brands,
+            'paginate' => $this->products
+        ];
+    }
+
     public function index()
     {
-        $categories = Category::all();
-        $types = Type::all();
-        $brands = Brand::all();
-        $products = Product::paginate(9);
         $fullProduct = [];
 
-        foreach ($products as $product) {
+        foreach ($this->products as $product) {
             $detail = $product->details()->first();
             $fullProduct[] = [
                 'id' => $product->id,
@@ -35,14 +52,14 @@ class CatalogController extends Controller
             ];
         }
 
-        $data = [
-            'categories' => $categories,
-            'types' => $types,
-            'brands' => $brands,
-            'products' => $fullProduct,
-            'paginate' => $products
-        ];
+        $this->data['products'] = $fullProduct;
+        $data = $this->data;
 
-        return view('catalog.index', compact('data'));
+        return view('catalog.products.product_list', compact('data'));
+    }
+
+    public function sort($field)
+    {
+
     }
 }

@@ -35,7 +35,7 @@
                     </div>
                     <div class="grid-list-product-wrapper">
                         <div class="product-view product-grid">
-                            @include('catalog.products.product_list')
+                            @yield('products')
                         </div>
                     </div>
                 </div>

@@ -1,37 +1,148 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3">Моя корзина</a></h5>
-    </div>
-    <div id="my-account-3" class="panel-collapse collapse">
-        <div class="panel-body">
-            <div class="billing-information-wrapper">
-                <div class="account-info-wrapper">
-                    <h4>Change Password</h4>
-                    <h5>Your Password</h5>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="billing-info">
-                            <label>Password</label>
-                            <input type="password">
+@extends('user.account')
+
+@section('user-content')
+    <div class="cart-main-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form action="#">
+                        <div class="table-content table-responsive">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Картинка</th>
+                                    <th>Название</th>
+                                    <th>Цена</th>
+                                    <th>Кол-во</th>
+                                    <th>Стоимость</th>
+                                    <th>фы</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img src="assets/img/cart/cart-3.jpg" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Dry Dog Food</a></td>
+                                    <td class="product-price-cart"><span class="amount">$110.00</span></td>
+                                    <td class="product-quantity">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$110.00</td>
+                                    <td class="product-remove"><a href="#"><i class="ti-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img src="assets/img/cart/cart-4.jpg" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Cat Buffalo Food</a></td>
+                                    <td class="product-price-cart"><span class="amount">$150.00</span></td>
+                                    <td class="product-quantity">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$150.00</td>
+                                    <td class="product-remove"><a href="#"><i class="ti-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img src="assets/img/cart/cart-5.jpg" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Legacy Dog Food</a></td>
+                                    <td class="product-price-cart"><span class="amount">$170.00</span></td>
+                                    <td class="product-quantity">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$170.00</td>
+                                    <td class="product-remove"><a href="#"><i class="ti-trash"></i></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="billing-info">
-                            <label>Password Confirm</label>
-                            <input type="password">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="cart-shiping-update-wrapper">
+                                    <div class="cart-shiping-update">
+                                        <a href="#">Continue Shopping</a>
+                                        <button>Update Shopping Cart</button>
+                                    </div>
+                                    <div class="cart-clear">
+                                        <a href="#">Clear Shopping Cart</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="billing-back-btn">
-                    <div class="billing-back">
-                        <a href="#"><i class=" ti-arrow-up"></i> back</a>
-                    </div>
-                    <div class="billing-btn">
-                        <button type="submit">Continue</button>
+                    </form>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="cart-tax">
+                                <h4 class="cart-bottom-title">Estimate Shipping And Tax</h4>
+                                <div class="tax-wrapper">
+                                    <p>Enter your destination to get a shipping estimate.</p>
+                                    <div class="tax-select-wrapper">
+                                        <div class="tax-select">
+                                            <label>
+                                                Country
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                State/Province
+                                            </label>
+                                            <select class="email s-email s-wid">
+                                                <option>Bangladesh</option>
+                                                <option>Albania</option>
+                                                <option>Åland Islands</option>
+                                                <option>Afghanistan</option>
+                                                <option>Belgium</option>
+                                            </select>
+                                        </div>
+                                        <div class="tax-select">
+                                            <label>
+                                                Zip/Postal Code
+                                            </label>
+                                            <input type="text" placeholder="1234567">
+                                        </div>
+                                        <button class="cart-btn-2" type="submit">Get A Quote</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="discount-code-wrapper">
+                                <h4 class="cart-bottom-title">DISCOUNT CODES</h4>
+                                <div class="discount-code">
+                                    <p>Enter your coupon code if you have one.</p>
+                                    <form>
+                                        <input type="text" required="" name="name">
+                                        <button class="cart-btn-2" type="submit">Get A Quote</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="grand-totall">
+                                <span>Subtotal:   $155.00</span>
+                                <h5>Grand Total:   $353.00</h5>
+                                <a href="#">Proceed To Checkout</a>
+                                <p>Checkout with Multiple Addresses</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
