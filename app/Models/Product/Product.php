@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, 'product_details');
+    }
 }

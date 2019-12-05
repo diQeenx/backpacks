@@ -23,61 +23,25 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider pt-100 pb-100 yellow-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
-                            <div class="slider-content slider-animated-1 pt-114">
-                                <h3 class="animated">We keep pets for pleasure.</h3>
-                                <h1 class="animated">Food & Vitamins <br>For all Pets</h1>
-                                <div class="slider-btn">
-                                    <a class="animated" href="product-details.html">SHOP NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-5 col-12">
-                            <div class="slider-single-img slider-animated-1">
-                                <img class="animated" src="{{ asset('img/slider/slider-single-img-2.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="food-category food-category-col pt-100 pb-60">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="single-food-category cate-padding-1 text-center mb-30">
-                        <div class="single-food-hover-2">
-                            <img src="{{ asset('img/product/product-1.jpg') }}" alt="">
-                        </div>
-                        <div class="single-food-content">
-                            <h3>Dogs Food</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="single-food-category cate-padding-2 text-center mb-30">
-                        <div class="single-food-hover-2">
-                            <img src="{{ asset('img/product/product-2.jpg') }}" alt="">
-                        </div>
-                        <div class="single-food-content">
-                            <h3>Cats Food</h3>
+                @foreach ($categories as $category)
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-food-category cate-padding-1 text-center mb-30">
+                            <a href="{{ route('catalog') }}">
+                                <div class="single-food-hover-2">
+                                    <img src="{{ asset( $category['image'] ) }}" alt="">
+                                </div>
+                                <div class="single-food-content">
+                                    <h3>{{ $category['name'] }}</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="single-food-category cate-padding-3 text-center mb-30">
-                        <div class="single-food-hover-2">
-                            <img src="{{ asset('img/product/product-3.jpg') }}" alt="">
-                        </div>
-                        <div class="single-food-content">
-                            <h3>Fishs Food</h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

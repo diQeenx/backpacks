@@ -17,9 +17,16 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::group(['namespace' => 'Catalog'], function () {
+    Route::get('catalog', 'CatalogController@index')->name('catalog');
+    Route::get('product/{id}', 'ProductController@index')->name('product');
+});
+
 Route::group(['namespace' => 'User'], function () {
-    Route::get('/account', 'AccountController@index')->name('account');
-    Route::post('/account', 'AccountController@edit')->name('account.edit');
+    Route::get('account', 'AccountController@index')->name('account');
+    Route::post('account', 'AccountController@edit')->name('account.edit');
+    Route::post('cart', 'CartController@add')->name('cart.add');
+    Route::post('cart/{id}', 'CartController@delete')->name('cart.delete');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {

@@ -20,8 +20,13 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'Унисекс',
+                'name' => 'Мужские',
                 'image' => 'img/product/category/men.jpeg',
+            ],
+            [
+                'id' => 3,
+                'name' => 'Унисекс',
+                'image' => 'img/product/category/unisex.jpg',
             ]
         ];
 

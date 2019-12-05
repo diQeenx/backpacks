@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Cart\Cart;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -76,6 +77,10 @@ class RegisterController extends Controller
         UserRole::create([
             'user_id' => $user->id,
             'role_id' => $role['id']
+        ]);
+
+        Cart::create([
+            'user_id' => $user->id
         ]);
 
         return $user;

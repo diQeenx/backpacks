@@ -28,4 +28,11 @@ class AccountController extends UserBaseController
         (new UsersDetail($data))->save();
         return back();
     }
+
+    public function addToCart(Request $request)
+    {
+        $data = $request->all();
+
+
+    }
 }

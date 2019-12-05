@@ -159,50 +159,51 @@
                                 <a href="{{ route('account') }}"><i class="icon-user icons"></i></a>
                             @endguest
                         </div>
-                        <div class="header-cart same-style">
-                            <button class="icon-cart">
-                                <i class="icon-handbag"></i>
-                                <span class="count-style">02</span>
-                            </button>
-                            <div class="shopping-cart-content">
-                                <ul>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="{{ asset('img/cart/cart-1.jpg') }}"></a>
+                        @if (($user = \Auth::user()) && !($user->isAdmin()))
+                            <div class="header-cart same-style">
+                                <button class="icon-cart">
+                                    <i class="icon-handbag"></i>
+                                    <span class="count-style">
+                                        {{ $user->cartItems()->count() }}
+                                    </span>
+                                </button>
+                                <div class="shopping-cart-content">
+                                    @if ($user->cartItems()->count() != 0)
+                                        <ul>
+                                            @foreach($user->cartItems as $item)
+                                                <li class="single-shopping-cart">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="{{ route('product', [$item->productDetail->id]) }}"><img alt="" src="{{ asset($item->productDetail->image) }}"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="{{ route('product', [$item->productDetail->id]) }}">{{ $item->productDetail->product->brand->name }} {{ $item->productDetail->product->name }}</a></h4>
+                                                        <h6>Кол-во: {{ $item->qty }}</h6>
+                                                        <span>{{ $item->total_price }} BYN</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a onclick="event.preventDefault();$('#deleteCart').submit()" href="#"><i class="ti-close"></i></a>
+                                                    </div>
+                                                    <form id="deleteCart" method="POST" action="{{ route('cart.delete', [$item->id]) }}">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        <div class="shopping-cart-total">
+                                            <h4>Total : <span class="shop-total">{{ $item->sum('total_price') }} BYN</span></h4>
                                         </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Dog Calcium Food </a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
+                                        <div class="shopping-cart-btn">
+                                            <a href="cart.html">Расширенная корзина</a>
+                                            <a href="checkout.html">Перейти к оплате</a>
                                         </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ti-close"></i></a>
+                                    @else
+                                        <div class="shopping-cart-empty text-center">
+                                            Нет элементов
                                         </div>
-                                    </li>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="{{ asset('img/cart/cart-2.jpg') }}"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Dog Calcium Food</a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ti-close"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-total">
-                                    <h4>Shipping : <span>$20.00</span></h4>
-                                    <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                </div>
-                                <div class="shopping-cart-btn">
-                                    <a href="cart.html">view cart</a>
-                                    <a href="checkout.html">checkout</a>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="mobile-menu-area electro-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
@@ -427,57 +428,6 @@
                         <a href="#modal3" data-toggle="tab" role="tab">
                             <img src="{{ asset('img/quick-view/s3.jpg') }}" alt="">
                         </a>
-                    </div>
-                </div>
-                <div class="qwick-view-right">
-                    <div class="qwick-view-content">
-                        <h3>Dog Calcium Food</h3>
-                        <div class="product-price">
-                            <span class="new">$20.00 </span>
-                            <span class="old">$50.00</span>
-                        </div>
-                        <div class="product-rating">
-                            <i class="icon-star theme-color"></i>
-                            <i class="icon-star theme-color"></i>
-                            <i class="icon-star theme-color"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do amt tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                        <div class="quick-view-select">
-                            <div class="select-option-part">
-                                <label>Size*</label>
-                                <select class="select">
-                                    <option value="">- Please Select -</option>
-                                    <option value="">XS</option>
-                                    <option value="">S</option>
-                                    <option value="">M</option>
-                                    <option value=""> L</option>
-                                    <option value="">XL</option>
-                                    <option value="">XXL</option>
-                                </select>
-                            </div>
-                            <div class="select-option-part">
-                                <label>Color*</label>
-                                <select class="select">
-                                    <option value="">- Please Select -</option>
-                                    <option value="">orange</option>
-                                    <option value="">pink</option>
-                                    <option value="">yellow</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="quickview-plus-minus">
-                            <div class="cart-plus-minus">
-                                <input type="text" value="2" name="qtybutton" class="cart-plus-minus-box">
-                            </div>
-                            <div class="quickview-btn-cart">
-                                <a class="btn-style" href="#">add to cart</a>
-                            </div>
-                            <div class="quickview-btn-wishlist">
-                                <a class="btn-hover" href="#"><i class="ti-heart"></i></a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

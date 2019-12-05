@@ -18,12 +18,14 @@ class ProductDetailsTableSeeder extends Seeder
                 'product_id' => 1,
                 'color_id' => 1,
                 'count' => 20,
+                'image' => 'img/product/details/asics.jpeg'
             ],
             [
                 'id' => 2,
                 'product_id' => 2,
                 'color_id' => 2,
                 'count' => 10,
+                'image' => 'img/product/details/swissgear.jpeg'
             ]
         ];
 

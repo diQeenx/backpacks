@@ -79,10 +79,10 @@ input {
     color: #000;
 }
 .uppercase {
-    text-transform: uppercase
+
 }
 .capitalize {
-    text-transform: capitalize
+
 }
 h1,
 h2,
@@ -1446,7 +1446,7 @@ textarea:focus {
     line-height: 1;
     padding: 18px 30px 17px;
     text-align: center;
-    text-transform: uppercase;
+    ;
     transition: all 0.3s ease 0s;
 }
 .btn-style:hover {
@@ -1521,7 +1521,7 @@ textarea:focus {
     font-size: 12.5px;
     line-height: 32px;
     padding: 0;
-    text-transform: capitalize;
+    ;
     color: #383838;
 }
 .account-curr-lang-wrap ul li ul li a img {
@@ -1563,7 +1563,7 @@ textarea:focus {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     line-height: 120px;
-    text-transform: uppercase;
+    ;
 }
 .main-menu li:hover>a {
     color: #7e4c4f;
@@ -1594,7 +1594,7 @@ textarea:focus {
     color: #555;
     display: block;
     line-height: 31px;
-    text-transform: capitalize;
+    ;
 }
 .main-menu nav>ul>li>ul.mega-menu {
     background: #fff none repeat scroll 0 0;
@@ -1629,7 +1629,7 @@ textarea:focus {
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 10px;
-    text-transform: uppercase;
+    ;
 }
 .mega-menu img {
     width: 100%;
@@ -1771,6 +1771,11 @@ button.icon-cart span.count-style {
     text-align: center;
     width: 20px;
 }
+
+.shopping-cart-empty {
+    margin-bottom: 20px;
+}
+
 .shopping-cart-delete>a:hover {
     border: 1px solid #7e4c4f;
     color: #7e4c4f;
@@ -1811,7 +1816,7 @@ button.icon-cart span.count-style {
     line-height: 1;
     padding: 15px 20px 14px;
     text-align: center;
-    text-transform: uppercase;
+    ;
     transition: all 0.3s ease 0s;
 }
 .shopping-cart-btn a:hover {
@@ -2063,8 +2068,10 @@ button.icon-cart span.count-style {
     opacity: 0.47;
     transform: translateX(-50%) scale(1);
 }
-.single-food-hover-2 > img {
+.single-food-hover-2 img {
     width: 100%;
+    min-height: 400px;
+    object-fit: cover; /* Вписываем фотографию в область */
 }
 .single-food-hover > img {
     max-width: 300px;
@@ -2097,6 +2104,9 @@ button.icon-cart span.count-style {
 }
 .product-img img {
     width: 100%;
+    height: 350px;
+
+    object-fit: cover; /* Вписываем фотографию в область */
     transition: all .7s ease 0s;
 }
 .product-action {
@@ -2264,14 +2274,14 @@ button.icon-cart span.count-style {
     font-weight: 500;
     margin-bottom: 5px;
     margin-top: 35px;
-    text-transform: capitalize;
+    ;
 }
 .sin-testiImage.slick-slide > h5 {
     color: #dedede;
     display: none;
     font-size: 16px;
     font-weight: 400;
-    text-transform: capitalize;
+    ;
 }
 .sin-testiImage.slick-slide.slick-center > h3,
 .sin-testiImage.slick-slide.slick-center > h5 {
@@ -2468,7 +2478,7 @@ h4.footer-title {
     color: #7e4c4f;
     font-weight: 600;
     text-decoration: underline;
-    text-transform: uppercase;
+    ;
 }
 .newsletter-wrapper>p a:hover {
     color: #242424;
@@ -2854,12 +2864,13 @@ input.cart-plus-minus-box {
 
 /* breadcrumb style */
 .breadcrumb-content > h2 {
+    text-transform: uppercase;
     color: #fff;
     font-size: 35px;
     font-weight: 600;
     line-height: 35px;
     margin: 0 0 12px;
-    text-transform: uppercase;
+    ;
 }
 .breadcrumb-content li {
     color: #454545;
@@ -2868,7 +2879,7 @@ input.cart-plus-minus-box {
     font-weight: 500;
     padding-right: 14px;
     position: relative;
-    text-transform: capitalize;
+    ;
 }
 .breadcrumb-content li a {
     color: #fff;
@@ -2902,7 +2913,7 @@ input.cart-plus-minus-box {
     font-weight: 600;
     line-height: 64px;
     margin: 0 0 18px;
-    text-transform: uppercase;
+    ;
 }
 .about-us-content > p {
     font-size: 14px;
@@ -3108,7 +3119,7 @@ input.cart-plus-minus-box {
     font-size: 14px;
     font-weight: bold;
     margin: 0;
-    text-transform: capitalize;
+    ;
 }
 .label-input input {
     background: transparent none repeat scroll 0 0;
@@ -3135,7 +3146,7 @@ input.cart-plus-minus-box {
     font-weight: 600;
     line-height: 1;
     padding: 7px 0;
-    text-transform: capitalize;
+    ;
     transition: all 0.3s ease 0s;
 }
 .price_slider_amount>button:hover {
@@ -3174,12 +3185,10 @@ input.cart-plus-minus-box {
     margin-bottom: 40px;
     padding: 12px 20px 10px;
 }
-.shorting-style>label {
+.shorting-style >label {
     color: #1d1d1d;
     font-size: 16px;
-    font-weight: 500;
     margin: 0 28px 0 0;
-    text-transform: capitalize;
 }
 .shorting-style>label span {
     color: #7e4c4f;
@@ -3197,7 +3206,7 @@ input.cart-plus-minus-box {
     height: 40px;
     min-width: 200px;
     padding: 0 40px 0 10px;
-    text-transform: capitalize;
+    ;
     width: inherit;
     position: relative;
 }
@@ -3339,7 +3348,7 @@ input.cart-plus-minus-box {
     font-weight: bold;
     line-height: 1;
     padding: 12px 22px;
-    text-transform: uppercase;
+    ;
 }
 .product-list-action-left a:hover {
     background-color: #333;
@@ -3429,14 +3438,14 @@ input.cart-plus-minus-box {
     margin: 0;
 }
 .quality-wrapper>label {
-    color: #454545;
+    color: #1d1d1d;
+    font-size: 16px;
     display: inline-block;
     float: left;
-    font-weight: bold;
     margin-bottom: 0;
     margin-right: 39px;
     margin-top: 8px;
-    text-transform: uppercase;
+    ;
 }
 .quality-wrapper {
     display: block;
@@ -3496,7 +3505,7 @@ input.cart-plus-minus-box {
     margin: 0 37px;
     padding-bottom: 13px;
     position: relative;
-    text-transform: uppercase;
+    ;
 }
 .description-review-topbar a::before {
     background-color: #7a7a7a;
@@ -3536,7 +3545,7 @@ input.cart-plus-minus-box {
     font-size: 15px;
     list-style: outside none none;
     margin-bottom: 6px;
-    text-transform: capitalize;
+    ;
 }
 .product-anotherinfo-wrapper li span {
     display: inline-block;
@@ -3562,7 +3571,7 @@ input.cart-plus-minus-box {
     font-weight: 600;
     line-height: 13px;
     margin: 0;
-    text-transform: capitalize;
+    ;
 }
 .ratting-author span {
     display: block;
@@ -3584,7 +3593,7 @@ input.cart-plus-minus-box {
     font-weight: 400;
     line-height: 12px;
     margin: 0 0 30px;
-    text-transform: uppercase;
+    ;
 }
 .ratting-form form .star-box {
     margin-bottom: 40px;
@@ -3611,7 +3620,7 @@ input.cart-plus-minus-box {
     letter-spacing: 0.2px;
     margin-top: 30px;
     padding: 0 25px;
-    text-transform: uppercase;
+    ;
     width: inherit;
 }
 .rating-form-style.form-submit input:hover {
@@ -3622,10 +3631,12 @@ input.cart-plus-minus-box {
     cursor: pointer;
     width: 100%;
 }
-#zoompro,
-.product-dec-slider a img {
-    border: 1px solid #ddd;
+
+#zoompro {
+    height: 600px;
+    object-fit: fill;
 }
+
 .product-dec-slider {
     margin-right: 10px;
     padding-right: 1px;
@@ -3640,7 +3651,7 @@ input.cart-plus-minus-box {
     font-weight: bold;
     margin-bottom: 27px;
     text-align: center;
-    text-transform: uppercase;
+    ;
 }
 .cart-main-area .table-content table {
     background: #fff none repeat scroll 0 0;
@@ -3660,7 +3671,7 @@ input.cart-plus-minus-box {
     font-size: 15px;
     font-weight: bold;
     padding: 14px 45px 13px;
-    text-transform: uppercase;
+    ;
     vertical-align: middle;
     white-space: nowrap;
 }
@@ -3769,7 +3780,7 @@ input.cart-plus-minus-box {
     font-weight: 600;
     line-height: 1;
     padding: 16px 27px;
-    text-transform: uppercase;
+    ;
 }
 .cart-shiping-update>button {
     border: medium none;
@@ -3796,7 +3807,7 @@ input.cart-plus-minus-box {
     font-size: 15px;
     font-weight: 600;
     padding-bottom: 13px;
-    text-transform: uppercase;
+    ;
 }
 .tax-wrapper>p {
     color: #454545;
@@ -3819,7 +3830,7 @@ input.cart-plus-minus-box {
     width: 196px;
 }
 .tax-select select {
-    background: #fff url("../../assets/img/icon-img/cart-select.png") no-repeat scroll right 10px center;
+    background: #fff url("{{../../assets/img/icon-img/cart-select.png}}") no-repeat scroll right 10px center;
     cursor: pointer;
 }
 .tax-select>label {
@@ -3848,7 +3859,7 @@ button.cart-btn-2,
     line-height: 1;
     margin: 5px 0 0;
     padding: 12px 20px 15px;
-    text-transform: uppercase;
+    ;
     transition: all 0.3s ease 0s;
 }
 .grand-totall>a {
@@ -3894,7 +3905,7 @@ button.cart-btn-2:hover,
     font-weight: 500;
     line-height: 1;
     padding: 7px 10px;
-    text-transform: uppercase;
+    ;
 }
 .product-wishlist-cart > a:hover {
     background-color: #242424;
@@ -3912,7 +3923,7 @@ h5.panel-title {
     font-weight: 600;
     margin: 0 0 30px;
     position: relative;
-    text-transform: uppercase;
+    ;
 }
 h5.panel-title a {
     color: #333;
@@ -3971,7 +3982,7 @@ h5.panel-title span {
     font-weight: bold;
     margin: 0;
     padding-bottom: 15px;
-    text-transform: uppercase;
+    ;
 }
 .checkout-register>p {
     color: #888888;
@@ -4003,7 +4014,7 @@ h5.panel-title span {
     font-weight: 600;
     line-height: 1;
     padding: 13px 20px;
-    text-transform: uppercase;
+    ;
     transition: all 0.3s ease 0s;
 }
 .checkout-btn:hover,
@@ -4058,7 +4069,7 @@ h5.panel-title span {
     margin: 0;
     padding: 14px 10px 15px;
     text-align: center;
-    text-transform: uppercase;
+    ;
 }
 .checkout-progress {
     background-color: #fff;
@@ -4106,7 +4117,7 @@ h5.panel-title span {
 .billing-info>label {
     color: #242424;
     font-size: 14px;
-    text-transform: capitalize;
+    ;
 }
 .billing-info input,
 .billing-select select {
@@ -4152,7 +4163,7 @@ h5.panel-title span {
     display: inline-block;
     font-size: 15px;
     margin-top: 7px;
-    text-transform: uppercase;
+    ;
 }
 .billing-back>a:hover {
     color: #7e4c4f;
@@ -4187,7 +4198,7 @@ h5.panel-title span {
     font-weight: bold;
     padding: 10px;
     text-align: center;
-    text-transform: capitalize;
+    ;
 }
 .o-pro-dec p {
     color: #454545;
@@ -4240,7 +4251,7 @@ h5.panel-title span {
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 20px;
-    text-transform: uppercase;
+    ;
 }
 .edit-address>a:hover {
     color: #7e4c4f;
@@ -4253,7 +4264,7 @@ h5.panel-title span {
 .account-info-wrapper>h4 {
     font-size: 18px;
     margin: 0;
-    text-transform: uppercase;
+    ;
 }
 .account-info-wrapper>h5 {
     font-size: 16px;
@@ -4285,7 +4296,7 @@ h5.panel-title span {
     color: #454545;
     font-size: 15px;
     margin: 0;
-    text-transform: capitalize;
+    ;
 }
 .entries-edit-delete>a {
     background-color: #454545;
@@ -4296,7 +4307,7 @@ h5.panel-title span {
     line-height: 1;
     margin: 0 2px;
     padding: 12px 15px;
-    text-transform: uppercase;
+    ;
 }
 .entries-edit-delete>a.edit {
     background-color: #df5c39;
@@ -4324,7 +4335,7 @@ h5.panel-title span {
     color: #444;
     font-size: 30px;
     margin-bottom: 5px;
-    text-transform: capitalize;
+    ;
 }
 .login-text span {
     font-size: 15px;
@@ -4379,7 +4390,7 @@ h5.panel-title span {
     font-size: 25px;
     font-weight: 700;
     margin: 0 20px;
-    text-transform: capitalize;
+    ;
     transition: all 0.3s ease 0s;
 }
 .login-register-tab-list.nav a {
@@ -4416,7 +4427,7 @@ h5.panel-title span {
     font-weight: 600;
     line-height: 1;
     padding: 13px 30px;
-    text-transform: uppercase;
+    ;
     transition: all 0.3s ease 0s;
 }
 
@@ -4560,7 +4571,7 @@ h5.panel-title span {
 .blog-details-content>h2 {
     font-size: 30px;
     font-weight: bold;
-    text-transform: capitalize;
+    ;
 }
 .single-blog-wrapper>p {
     font-size: 14px;
@@ -4598,7 +4609,7 @@ blockquote.importent-title {
     color: #444;
     font-size: 16px;
     margin-right: 18px;
-    text-transform: capitalize;
+    ;
 }
 .blog-dec-tags ul li a:hover,
 .blog-dec-social ul li a:hover {
@@ -4619,7 +4630,7 @@ blockquote.importent-title {
     font-size: 16px;
     font-weight: bold;
     margin-top: 0px;
-    text-transform: capitalize;
+    ;
 }
 .blog-dec-social ul li {
     display: inline-block;
@@ -4634,7 +4645,7 @@ blockquote.importent-title {
     font-size: 20px;
     font-weight: bold;
     margin: 0;
-    text-transform: capitalize;
+    ;
 }
 .single-comment-wrapper {
     display: flex;
@@ -4666,7 +4677,7 @@ blockquote.importent-title {
     color: #444;
     font-size: 15px;
     font-weight: bold;
-    text-transform: capitalize;
+    ;
 }
 .blog-details-btn a:hover {
     color: #7e4c4f;
