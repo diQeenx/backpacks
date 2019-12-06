@@ -25,11 +25,13 @@ Route::group(['namespace' => 'Catalog'], function () {
 Route::group(['namespace' => 'User'], function () {
     Route::group(['prefix' => 'account'], function () {
         Route::get('/', 'AccountController@index')->name('account');
-        Route::post('/', 'AccountController@edit')->name('account.edit');
-        Route::get('cart', 'AccountController@cart')->name('account.cart');
+        Route::post('main', 'AccountController@editMain')->name('account.edit.main');
+        Route::post('address', 'AccountController@editAddress')->name('account.edit.address');
+        Route::post('payment', 'AccountController@editPayment')->name('account.edit.payment');
+        Route::get('cart', 'CartController@show')->name('account.cart');
     });
     Route::post('cart', 'CartController@add')->name('cart.add');
-    Route::post('cart/{id}', 'CartController@delete')->name('cart.delete');
+    Route::post('cart/{id}', 'CartController@deleteDetail')->name('cart.delete');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {

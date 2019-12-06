@@ -59,14 +59,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(Cart::class);
     }
-
-    public function card()
-    {
-        return $this->belongsTo(Card::class);
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
 }

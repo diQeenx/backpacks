@@ -194,6 +194,7 @@ return [
         'available'             => 'Доступно',
         'size'                  => 'Размер',
         'country_id'            => 'Страна',
-        'card_id'               => 'Тип карты'
+        'card_id'               => 'Тип карты',
+        'cvv'                   => 'CVV'
     ],
 ];

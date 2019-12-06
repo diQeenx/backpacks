@@ -26,6 +26,7 @@ class CreateUsersDetailsTable extends Migration
             $table->unsignedInteger('card_id')->nullable();
             $table->string('card_number')->nullable();
             $table->string('expiration_date')->nullable();
+            $table->integer('cvv')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

@@ -193,7 +193,7 @@
                                             <h4>Total : <span class="shop-total">{{ $item->sum('total_price') }} BYN</span></h4>
                                         </div>
                                         <div class="shopping-cart-btn">
-                                            <a href="cart.html">Расширенная корзина</a>
+                                            <a href="{{ route('account.cart') }}">Расширенная корзина</a>
                                             <a href="checkout.html">Перейти к оплате</a>
                                         </div>
                                     @else
