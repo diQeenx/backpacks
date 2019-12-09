@@ -42,7 +42,7 @@
                 <div class="col-lg-3">
                     <div class="shop-sidebar">
                         <div class="shop-widget">
-                            <h4 class="shop-sidebar-title">Search Products</h4>
+                            <h4 class="shop-sidebar-title">Поиск по названию</h4>
                             <div class="shop-search mt-25 mb-50">
                                 <form class="shop-search-form">
                                     <input type="text" placeholder="Find a product">
@@ -52,49 +52,61 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="shop-widget">
-                            <h4 class="shop-sidebar-title">Filter By Price</h4>
-                            <div class="price_filter mt-25">
-                                <div id="slider-range"></div>
-                                <div class="price_slider_amount">
-                                    <div class="label-input">
-                                        <label>price : </label>
-                                        <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                        <form action="{{ route('catalog.filter') }}">
+                            <div class="shop-widget mt-20">
+                                <label>Цена</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="billing-info">
+                                            <input type="number" min="0" value="{{ old('price_begin') ?? 0 }}" name="price_begin" placeholder="от">
+                                        </div>
                                     </div>
-                                    <button type="button">Filter</button>
+                                    <div class="col">
+                                        <div class="billing-info">
+                                            <input type="number" min="0" name="price_end" value="{{ old('price_end') ?? 999999 }}" placeholder="до" >
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="shop-widget mt-50">
-                            <h4 class="shop-sidebar-title">Для кого</h4>
-                            <div class="shop-list-style mt-20">
-                                <ul>
-                                    @foreach($data['categories'] as $category)
-                                        <li><a href="">{{ $category['name'] }} <span>{{ $category->products()->count() }}</span></a></li>
-                                    @endforeach
-                                </ul>
+                            <div class="shop-widget mt-20">
+                                <div class="billing-select card-mrg">
+                                    <label>Категория</label>
+                                    <select name="category">
+                                        <option selected></option>
+                                        @foreach($data['categories'] as $category)
+                                            <option  value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="shop-widget mt-50">
-                            <h4 class="shop-sidebar-title">Бренд </h4>
-                            <div class="shop-list-style mt-20">
-                                <ul>
-                                    @foreach($data['brands'] as $brand)
-                                        <li><a href="">{{ $brand['name'] }} <span>{{ $brand->products()->count() }}</span></a></li>
-                                    @endforeach
-                                </ul>
+                            <div class="shop-widget mt-20">
+                                <div class="billing-select card-mrg">
+                                    <label>Бренд</label>
+                                    <select name="brand">
+                                        <option selected></option>
+                                        @foreach($data['brands'] as $brand)
+                                            <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="shop-widget mt-50">
-                            <h4 class="shop-sidebar-title">Тип </h4>
-                            <div class="shop-list-style mt-20">
-                                <ul>
-                                    @foreach($data['types'] as $type)
-                                        <li><a href="#">{{ $type['name'] }} <span>{{ $type->products()->count() }}</span></a></li>
-                                    @endforeach
-                                </ul>
+                            <div class="shop-widget mt-20">
+                                <div class="billing-select card-mrg">
+                                    <label>Тип</label>
+                                    <select name="type">
+                                        <option selected></option>
+                                        @foreach($data['types'] as $type)
+                                            <option value="{{ $type['id'] }}">{{ $type['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                            <div class="shop-widget mt-20">
+                                <div class="product-list-action-center">
+                                    <button type="submit">Показать</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

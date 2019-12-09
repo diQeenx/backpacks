@@ -3720,6 +3720,13 @@ input.cart-plus-minus-box {
 .table-content table td.product-thumbnail {
     width: 155px;
 }
+
+.admin > a > img {
+    height: 155px !important;
+    object-fit: cover;
+    width: 200px;
+}
+
 .table-content table td.product-thumbnail a img {
     padding-left: 20px;
 }
@@ -4164,7 +4171,7 @@ h5.panel-title span {
 }
 .billing-info input,
 .billing-select select {
-    background: transparent none repeat scroll 0 0;
+    background-color: #fff;
     border: 1px solid #eaeaea;
     color: #555;
     height: 40px;
@@ -4191,9 +4198,16 @@ h5.panel-title span {
 .single-ship label {
     color: #454545;
 }
+shop-widget
 .single-ship {
     margin-bottom: 5px;
 }
+
+shop-widget > label {
+    color: #242424;
+    font-size: 14px;
+}
+
 .ship-wrapper {
     margin-top: 20px;
 }

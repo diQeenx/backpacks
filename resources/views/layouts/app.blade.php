@@ -42,6 +42,9 @@
                                 <li>
                                     <a href="{{ route('home') }}">Главная</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('catalog') }}">Каталог</a>
+                                </li>
                                 <li class="mega-menu-position"><a href="shop-page.html">Food</a>
                                     <ul class="mega-menu">
                                         <li>
@@ -190,7 +193,7 @@
                                             @endforeach
                                         </ul>
                                         <div class="shopping-cart-total">
-                                            <h4>Total : <span class="shop-total">{{ $item->sum('total_price') }} BYN</span></h4>
+                                            <h4>Total : <span class="shop-total">{{ $user->cartItems->sum('total_price') }} BYN</span></h4>
                                         </div>
                                         <div class="shopping-cart-btn">
                                             <a href="{{ route('account.cart') }}">Расширенная корзина</a>

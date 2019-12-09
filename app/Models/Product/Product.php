@@ -30,4 +30,28 @@ class Product extends Model
     {
         return $this->belongsToMany(Color::class, 'product_details');
     }
+
+    public function scopeOfCategory($query, $id) {
+        if (isset($id)) {
+            return $query->where('category_id', $id);
+        }
+    }
+
+    public function scopeOfBrand($query, $id) {
+        if (isset($id)) {
+            return $query->where('brand_id', $id);
+        }
+    }
+
+    public function scopeOfType($query, $id) {
+        if (isset($id)) {
+            return $query->where('type_id', $id);
+        }
+    }
+
+    public function scopeOfPrice($query, $begin, $end) {
+        if (isset($begin) && isset($end)) {
+            return $query->whereBetween('price', [$begin, $end]);
+        }
+    }
 }

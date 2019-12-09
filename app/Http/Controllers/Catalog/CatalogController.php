@@ -34,6 +34,14 @@ class CatalogController extends Controller
 
     public function index()
     {
+        $this->renderFinalData();
+        $data = $this->data;
+
+        return view('catalog.products.product_list', compact('data'));
+    }
+
+    public function renderFinalData()
+    {
         $fullProduct = [];
 
         foreach ($this->products as $product) {
@@ -53,13 +61,28 @@ class CatalogController extends Controller
         }
 
         $this->data['products'] = $fullProduct;
+    }
+
+    public function filter(Request $request)
+    {
+        $category = $request->category ?? null;
+        $brand = $request->brand ?? null;
+        $type = $request->type ?? null;
+        $price_begin = $request->price_begin ?? null;
+        $price_end = $request->price_end ?? null;
+
+        $products = Product::OfCategory($category)
+                ->OfBrand($brand)
+                ->OfType($type)
+                ->OfPrice($price_begin, $price_end);
+
+        $this->products = $products->paginate(10);
+        $this->data['paginate'] = $this->products;
+
+        $this->renderFinalData();
+
         $data = $this->data;
 
         return view('catalog.products.product_list', compact('data'));
-    }
-
-    public function sort($field)
-    {
-
     }
 }

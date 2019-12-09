@@ -18,8 +18,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Catalog'], function () {
-    Route::get('catalog', 'CatalogController@index')->name('catalog');
+        Route::get('catalog', 'CatalogController@index')->name('catalog');
     Route::get('product/{id}', 'ProductController@index')->name('product');
+    Route::get('catalog/filter', 'CatalogController@filter')->name('catalog.filter');
 });
 
 Route::group(['namespace' => 'User'], function () {
@@ -36,6 +37,9 @@ Route::group(['namespace' => 'User'], function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('index', 'AdminController@index')->name('admin.index');
+    Route::get('categories', 'CategoryController@index')->name('admin.category');
+    Route::post('categories/{id}', 'CategoryController@delete')->name('admin.category.delete');
+    Route::post('categories', 'CategoryController@add')->name('admin.category.add');
 });
 
 
