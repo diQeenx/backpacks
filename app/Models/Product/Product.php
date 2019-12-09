@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'category_id',
+        'brand_id',
+        'type_id',
+        'name',
+        'size',
+        'price',
+        'description'
+    ];
+
     public function details()
     {
         return $this->hasMany(ProductDetails::class);

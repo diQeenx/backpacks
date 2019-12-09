@@ -37,9 +37,19 @@ Route::group(['namespace' => 'User'], function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('index', 'AdminController@index')->name('admin.index');
+
     Route::get('categories', 'CategoryController@index')->name('admin.category');
     Route::post('categories/{id}', 'CategoryController@delete')->name('admin.category.delete');
     Route::post('categories', 'CategoryController@add')->name('admin.category.add');
+
+    Route::get('brands', 'BrandController@index')->name('admin.brand');
+    Route::post('brands/{id}', 'BrandController@delete')->name('admin.brand.delete');
+    Route::post('brands', 'BrandController@add')->name('admin.brand.add');
+
+    Route::get('products', 'ProductController@index')->name('admin.product');
+    Route::post('products/{id}', 'ProductController@delete')->name('admin.product.delete');
+    Route::post('products', 'ProductController@add')->name('admin.product.add');
+    Route::post('detail', 'ProductController@addDetail')->name('admin.product.detail');
 });
 
 

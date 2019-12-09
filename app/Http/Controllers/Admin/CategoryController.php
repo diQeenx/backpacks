@@ -17,10 +17,12 @@ class CategoryController extends AdminBaseController
 
     public function add(Request $request)
     {
-        $path = $request->file('img');
+        $data['image'] = 'storage/' . $request->file('img')->store('categories', 'public');
+        $data['name'] = $request->name;
 
-        var_dump($path);
-        exit;
+        (new Category($data))->save();
+
+        return back();
     }
 
     public function delete($id)

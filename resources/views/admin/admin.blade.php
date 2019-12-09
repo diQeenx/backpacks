@@ -29,9 +29,9 @@
                                         <div class="billing-information-wrapper">
                                             <div class="product-list-action-center">
                                                 <button onclick="location.href = '{{route('admin.category')}}'">Категории</button>
-                                                <button onclick="location.href = '{{route('account.cart')}}'">Бренды</button>
-                                                <button onclick="location.href = '{{route('account.cart')}}'">Виды</button>
-                                                <button onclick="location.href = '{{route('account.cart')}}'">Продукты</button>
+                                                <button onclick="location.href = '{{route('admin.brand')}}'">Бренды</button>
+                                                <button onclick="location.href = '{{route('admin.product')}}'">Виды</button>
+                                                <button onclick="location.href = '{{route('admin.product')}}'">Продукты</button>
                                                 <button onclick="location.href = '{{route('account.cart')}}'">Продажи</button>
                                                 <button onclick="location.href = '{{route('account.cart')}}'">Клиенты</button>
                                                 <form method="POST" action="{{ route('logout') }}">

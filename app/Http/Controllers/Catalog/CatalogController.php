@@ -46,6 +46,10 @@ class CatalogController extends Controller
 
         foreach ($this->products as $product) {
             $detail = $product->details()->first();
+            if ($detail === null) {
+                continue;
+            }
+
             $fullProduct[] = [
                 'id' => $product->id,
                 'category' => $product->category->name,

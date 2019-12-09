@@ -16,12 +16,10 @@ class ColorsTableSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'Черный',
-                'value' => 'black'
             ],
             [
                 'id' => 2,
                 'name' => 'Белый',
-                'value' => 'white'
             ]
         ];
 

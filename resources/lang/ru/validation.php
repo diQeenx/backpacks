@@ -195,6 +195,10 @@ return [
         'size'                  => 'Размер',
         'country_id'            => 'Страна',
         'card_id'               => 'Тип карты',
-        'cvv'                   => 'CVV'
+        'cvv'                   => 'CVV',
+        'category_id'           => 'Категория',
+        'brand_id'              => 'Бренд',
+        'type_id'               => 'Тип',
+        'price'                 => 'Цена'
     ],
 ];
