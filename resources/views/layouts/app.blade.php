@@ -197,7 +197,7 @@
                                         </div>
                                         <div class="shopping-cart-btn">
                                             <a href="{{ route('account.cart') }}">Расширенная корзина</a>
-                                            <a href="checkout.html">Перейти к оплате</a>
+                                            <a href="{{ route('account.checkout') }}">Перейти к оплате</a>
                                         </div>
                                     @else
                                         <div class="shopping-cart-empty text-center">

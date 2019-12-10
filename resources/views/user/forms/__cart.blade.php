@@ -10,6 +10,7 @@
                             <thead>
                                 <tr>
                                     <th>Название</th>
+                                    <th>Цвет</th>
                                     <th>Цена, BYN</th>
                                     <th>Кол-во</th>
                                     <th>Стоимость, BYN</th>
@@ -22,6 +23,7 @@
                                         @csrf
                                         <tr>
                                             <td class="product-name"><a href="{{ route('product', [$position['product_id']]) }}">{{ $position['product_name'] }}</a></td>
+                                            <td>{{ $position['color'] }}</td>
                                             <td class="product-price-cart">{{ $position['price'] }}</td>
                                             <td class="product-quantity">
                                                 <div class="cart-plus-minus">
@@ -37,6 +39,7 @@
                                     <td class="product-name">Итого</td>
                                     <td class="product-price-cart"></td>
                                     <td></td>
+                                    <td></td>
                                     <td class="product-subtotal">{{ $total }}</td>
                                     <td></td>
                                 </tr>
@@ -50,6 +53,9 @@
                                     <div class="cart-shiping-update">
                                         <a href="{{ route('catalog') }}">Продолжить</a>
                                         <button>Обновить</button>
+                                    </div>
+                                    <div class="cart-shiping-update">
+                                        <button>Перейти к оплате</button>
                                     </div>
                                 </div>
                             </div>

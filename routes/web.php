@@ -30,6 +30,9 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('address', 'AccountController@editAddress')->name('account.edit.address');
         Route::post('payment', 'AccountController@editPayment')->name('account.edit.payment');
         Route::get('cart', 'CartController@show')->name('account.cart');
+
+        Route::get('checkout', 'CheckoutController@index')->name('account.checkout');
+        Route::post('checkout', 'CheckoutController@add')->name('account.checkout.add');
     });
     Route::post('cart', 'CartController@add')->name('cart.add');
     Route::post('cart/{id}', 'CartController@deleteDetail')->name('cart.delete');

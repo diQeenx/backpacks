@@ -40,12 +40,10 @@ class ProductController extends AdminBaseController
 
         if ($data['color_id'] === '0') {
             if ($data['color']) {
-                var_dump($data['color']);
-                $name = $data['color'];
-                (new Color($name))->save();
+                Color::create(['name' => $data['color']]);
+                $data['color_id'] = Color::where('name', $data['color']);
             }
         }
-        exit;
 
         (new ProductDetails($data))->save();
 

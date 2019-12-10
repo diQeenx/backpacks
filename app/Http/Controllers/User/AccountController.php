@@ -90,4 +90,9 @@ class AccountController extends UserBaseController
     {
         $data = $request->all();
     }
+
+    public function checkout()
+    {
+        return view('user.checkout');
+    }
 }

@@ -72,6 +72,7 @@ class CartController extends UserBaseController
             $positions[$item->id] = [
                 'product_id' => $item->productDetail->id,
                 'product_name' => "{$item->productDetail->product->brand->name} {$item->productDetail->product->name}",
+                'color' => $item->productDetail->color->name,
                 'qty' => $item->qty,
                 'price' => $item->price,
                 'total' => $item->total_price,
