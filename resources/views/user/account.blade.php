@@ -30,7 +30,7 @@
                                             <div class="product-list-action-center">
                                                 <button onclick="location.href = '{{route('account')}}'">Персональные данные</button>
                                                 <button onclick="location.href = '{{route('account.cart')}}'">Моя корзина</button>
-                                                <button>Мои покупки</button>
+                                                <button onclick="location.href = '{{route('account.purchase')}}'">Мои покупки</button>
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
                                                     <button type="submit">Выход</button>

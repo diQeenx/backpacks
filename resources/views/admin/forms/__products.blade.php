@@ -7,40 +7,47 @@
         </div>
         <div id="my-account-1" class="panel-collapse collapse">
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="table-content table-responsive">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>Категория</th>
-                                    <th>Бренд</th>
-                                    <th>Тип</th>
-                                    <th>Название</th>
-                                    <th>Размер</th>
-                                    <th>Цена</th>
-                                    <th>Описание</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($products as $product)
-                                    <form action="{{ route('admin.product.delete', [$product['id']]) }}" method="POST">
-                                        @csrf
-                                            <tr>
-                                                <td>{{ $product->category->name }}</td>
-                                                <td>{{ $product->brand->name }}</td>
-                                                <td>{{ $product->type->name }}</td>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->size }}</td>
-                                                <td>{{ $product->price }}</td>
-                                                <td>{{ $product->description }}</td>
-                                                <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
-                                            </tr>
-                                    </form>
-                                @endforeach
-                                </tbody>
-                            </table>
+                <div class="billing-information-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="table-content table-responsive">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Категория</th>
+                                        <th>Бренд</th>
+                                        <th>Тип</th>
+                                        <th>Название</th>
+                                        <th>Размер</th>
+                                        <th>Цена</th>
+                                        <th>Описание</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($products as $product)
+
+                                                <tr>
+                                                    <td>{{ $product->category->name }}</td>
+                                                    <td>{{ $product->brand->name }}</td>
+                                                    <td>{{ $product->type->name }}</td>
+                                                    <td>{{ $product->name }}</td>
+                                                    <td>{{ $product->size }}</td>
+                                                    <td>{{ $product->price }}</td>
+                                                    <td>{{ $product->description }}</td>
+                                                    <form action="{{ route('admin.product.info', [$product['id']]) }}" method="get">
+                                                        <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-pencil"></i></button></td>
+                                                    </form>
+                                                    <form action="{{ route('admin.product.delete', [$product['id']]) }}" method="POST">
+                                                        @csrf
+                                                        <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
+                                                    </form>
+                                                </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

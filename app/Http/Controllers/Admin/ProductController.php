@@ -58,4 +58,28 @@ class ProductController extends AdminBaseController
 
         return back();
     }
+
+    public function info($id)
+    {
+        $categories = Category::all();
+        $brands = Brand::all();
+        $types = Type::all();
+        $product = Product::find($id);
+
+        return view('admin.forms.__details', [
+            'categories' => $categories,
+            'brands' => $brands,
+            'types' => $types,
+            'product' => $product
+        ]);
+    }
+
+    public function productUpdate(ProductRequest $request, $id)
+    {
+        $data = $request->except('_token');
+
+        Product::find($id)->update($data);
+
+        return back();
+    }
 }

@@ -18,9 +18,10 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Catalog'], function () {
-        Route::get('catalog', 'CatalogController@index')->name('catalog');
+    Route::get('catalog', 'CatalogController@index')->name('catalog');
     Route::get('product/{id}', 'ProductController@index')->name('product');
     Route::get('catalog/filter', 'CatalogController@filter')->name('catalog.filter');
+    Route::get('catalog/search', 'CatalogController@searchByName')->name('catalog.search');
 });
 
 Route::group(['namespace' => 'User'], function () {
@@ -30,6 +31,7 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('address', 'AccountController@editAddress')->name('account.edit.address');
         Route::post('payment', 'AccountController@editPayment')->name('account.edit.payment');
         Route::get('cart', 'CartController@show')->name('account.cart');
+        Route::get('purchases', 'PurchaseController@index')->name('account.purchase');
 
         Route::get('checkout', 'CheckoutController@index')->name('account.checkout');
         Route::post('checkout', 'CheckoutController@add')->name('account.checkout.add');
@@ -53,6 +55,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('products/{id}', 'ProductController@delete')->name('admin.product.delete');
     Route::post('products', 'ProductController@add')->name('admin.product.add');
     Route::post('detail', 'ProductController@addDetail')->name('admin.product.detail');
+    Route::get('products/{id}/info', 'ProductController@info')->name('admin.product.info');
+    Route::post('products/{id}/update', 'ProductController@productUpdate')->name('admin.product.update');
 });
 
 

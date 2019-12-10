@@ -24,11 +24,6 @@
                     <input type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Пароль" >
                 </div>
                 <div class="button-box">
-                    <div class="login-toggle-btn">
-                        <input type="checkbox">
-                        <label>Remember me</label>
-                        <a href="#">Forgot Password?</a>
-                    </div>
                     <button type="submit"><span>Войти</span></button>
                 </div>
             </form>

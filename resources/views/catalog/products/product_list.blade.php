@@ -1,14 +1,14 @@
-@extends('catalog.index')
+{{--@extends('catalog.index')
 
-@section('products')
+@section('products')--}}
     <div class="row">
         @if (count($data['products']) !== 0)
             @foreach($data['products'] as $product)
                 <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
                     <div class="product-wrapper mb-10">
-                        <div class="product-img">
+                        <div class="product-img bg-white">
                             <a href="{{ route('product', [$product['detail_id']]) }}">
-                                <img src="{{ asset($product['image']) }}" alt="">
+                                <img src="{{ asset($product['image']) }}" class="p-1" alt="">
                             </a>
                         </div>
                         <div class="product-content text-center">
@@ -26,6 +26,6 @@
             </div>
         @endif
     </div>
-
-    {{ $data['paginate']->links() }}
+{{--
 @endsection
+--}}

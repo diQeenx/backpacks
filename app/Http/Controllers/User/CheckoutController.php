@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Product\ProductDetails;
 use App\Models\Cart\CartDetail;
 use App\Models\Country;
 use App\Models\Sale\Sale;
@@ -9,6 +10,7 @@ use App\Models\Sale\SaleProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Checkout\CheckoutSale;
+use Illuminate\Validation\ValidationException;
 
 class CheckoutController extends UserBaseController
 {
@@ -17,7 +19,7 @@ class CheckoutController extends UserBaseController
         $user = auth()->user();
         if ($user->cartItems->count() !== 0) {
             $countries = Country::all();
-            return view('user.checkout', ['user' => $user, 'countries' => $countries]);
+            return view('user.forms.__checkout', ['user' => $user, 'countries' => $countries]);
         } else {
             return redirect(route('account.cart'));
         }
@@ -44,6 +46,9 @@ class CheckoutController extends UserBaseController
             $newData['payment_type'] = "Наличные";
         } else {
             $newData['payment_type'] = "Картой";
+            if (!isset($user->detail->card_number)) {
+
+            }
             $newData['card'] = $user->detail->card_number ?? null;
         }
 
@@ -71,7 +76,9 @@ class CheckoutController extends UserBaseController
             $res = (new SaleProduct($data))->save();
 
             if ($res) {
-                $user->cartItems()->delete();
+                $newQty = $cartItem->productDetail->count - $cartItem->qty;
+                ProductDetails::find($cartItem->productDetail->id)->update(['count' => $newQty]);
+                $cartItem->delete();
             }
         }
     }

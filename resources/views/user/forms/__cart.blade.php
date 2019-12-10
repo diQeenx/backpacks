@@ -19,21 +19,22 @@
                             </thead>
                             <tbody>
                                 @foreach($positions as $key => $position)
-                                    <form action="{{ route('cart.delete', [$key]) }}" method="POST">
-                                        @csrf
+
                                         <tr>
                                             <td class="product-name"><a href="{{ route('product', [$position['product_id']]) }}">{{ $position['product_name'] }}</a></td>
                                             <td>{{ $position['color'] }}</td>
                                             <td class="product-price-cart">{{ $position['price'] }}</td>
                                             <td class="product-quantity">
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{ $position['qty'] }}">
+                                                    <input class="cart-plus-minus-box" type="text" name="qty" value="{{ $position['qty'] }}">
                                                 </div>
                                             </td>
                                             <td class="product-subtotal">{{ $position['total'] }}</td>
-                                            <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
+                                            <form action="{{ route('cart.delete', [$key]) }}" method="POST">
+                                                @csrf
+                                                <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
+                                            </form>
                                         </tr>
-                                    </form>
                                 @endforeach
                                 <tr>
                                     <td class="product-name">Итого</td>
@@ -55,7 +56,7 @@
                                         <button>Обновить</button>
                                     </div>
                                     <div class="cart-shiping-update">
-                                        <button>Перейти к оплате</button>
+                                        <a href="{{ route('account.checkout') }}">Перейти к оплате</a>
                                     </div>
                                 </div>
                             </div>

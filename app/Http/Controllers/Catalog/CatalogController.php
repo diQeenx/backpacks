@@ -22,22 +22,29 @@ class CatalogController extends Controller
         $this->categories = Category::all();
         $this->types = Type::all();
         $this->brands = Brand::all();
-        $this->products = Product::paginate(9);
+        $products = Product::all();
+        foreach ($products as $product) {
+            if ($product->details->sum('count') > 0) {
+                $this->products[] = $product;
+            }
+        }
 
         $this->data = [
             'categories' => $this->categories,
             'types' => $this->types,
             'brands' => $this->brands,
-            'paginate' => $this->products
         ];
     }
 
-    public function index()
+    public function index(Request $request = null)
     {
+        if ($request) {
+            $this->filter($request);
+        }
         $this->renderFinalData();
         $data = $this->data;
 
-        return view('catalog.products.product_list', compact('data'));
+        return view('catalog.index', compact('data'));
     }
 
     public function renderFinalData()
@@ -75,18 +82,47 @@ class CatalogController extends Controller
         $price_begin = $request->price_begin ?? null;
         $price_end = $request->price_end ?? null;
 
-        $products = Product::OfCategory($category)
-                ->OfBrand($brand)
-                ->OfType($type)
-                ->OfPrice($price_begin, $price_end);
+        $products = (Product::OfCategory($category)
+                            ->OfBrand($brand)
+                            ->OfType($type)
+                            ->OfPrice($price_begin, $price_end))->get();
 
-        $this->products = $products->paginate(10);
-        $this->data['paginate'] = $this->products;
+        $prod = [];
+        foreach ($products as $product) {
+            if ($product->details->sum('count') > 0) {
+                $prod[] = $product;
+            }
+        }
+
+        $this->products = $prod;
 
         $this->renderFinalData();
 
         $data = $this->data;
 
         return view('catalog.products.product_list', compact('data'));
+    }
+
+    public function searchByName(Request $request)
+    {
+        if ($name = $request->name) {
+           $products = (Product::OfName($name))->get();
+           $prod = [];
+            foreach ($products as $product) {
+                if ($product->details->sum('count') != 0) {
+                    $prod[] = $product;
+                }
+            }
+
+            $this->products = $prod;
+
+            $this->renderFinalData();
+
+            $data = $this->data;
+
+            return view('catalog.products.product_list', compact('data'));
+        } else {
+            return redirect(route('catalog.filter'));
+        }
     }
 }

@@ -10,8 +10,10 @@ class ProductController extends Controller
 {
     public function index(int $id)
     {
-        $product = ProductDetails::find($id)->product;
-
-        return view('catalog.products.product_detail', compact('product'));
+        if (ProductDetails::find($id)->product->details->sum('count') > 0) {
+            $product = ProductDetails::find($id)->product;
+            return view('catalog.products.product_detail', compact('product'));
+        }
+        return back();
     }
 }

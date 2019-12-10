@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Cart\Cart;
 use App\Models\Cart\CartDetail;
 use App\Models\Product\Product;
+use App\Models\Product\ProductDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,19 +25,21 @@ class CartController extends UserBaseController
         }
 
         $qty = (int)$request->qty;
-        $price = $product->price;
-        $total_price = $qty * $price;
+        if ((ProductDetails::find($product_details_id)->count - $qty) > 0) {
+            $price = $product->price;
+            $total_price = $qty * $price;
 
-        if (($cartDetail = CartDetail::where(['cart_id' => $cart_id, 'product_details_id' => $product_details_id]))->exists()) {
-            $this->updateDetail($request, $cartDetail->value('id'));
-        } else {
-            CartDetail::create([
-                'cart_id' => $cart_id,
-                'product_details_id' => $product_details_id,
-                'qty' => $qty,
-                'price' => $price,
-                'total_price' => $total_price
-            ]);
+            if (($cartDetail = CartDetail::where(['cart_id' => $cart_id, 'product_details_id' => $product_details_id]))->exists()) {
+                $this->updateDetail($request, $cartDetail->value('id'));
+            } else {
+                CartDetail::create([
+                    'cart_id' => $cart_id,
+                    'product_details_id' => $product_details_id,
+                    'qty' => $qty,
+                    'price' => $price,
+                    'total_price' => $total_price
+                ]);
+            }
         }
 
         return back();

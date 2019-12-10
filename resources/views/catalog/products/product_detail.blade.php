@@ -40,7 +40,8 @@
                                 <span><i class="ion-android-checkbox-outline"></i>В наличии</span>
                             @endif
                         </div>
-                        <p>{{ $product->description ?? 'Рюкзак '.$product->type->name.', '.$product->category->name.'. '.$product->size.' см'}}</p>
+                        <p>{{'Рюкзак '.$product->type->name.', '.$product->category->name.'. '.$product->size.' см'}}</p>
+                        <p>{{$product->description ?? null}}</p>
                         <form id="addtocart" method="POST" action="{{ route('cart.add') }}">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
