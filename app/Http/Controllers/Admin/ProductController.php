@@ -27,6 +27,20 @@ class ProductController extends AdminBaseController
     {
         $data = $request->except('_token');
 
+        if ($data['type_id'] === '0') {
+            if ($data['type']) {
+                $type = Type::where('name', $data['type']);
+                if ($type->count() === 0) {
+                    Type::create(['name' => $data['type']]);
+                    $data['type_id'] = (Type::where('name', $data['type'])->first())->id;
+                } else {
+                    $data['type_id'] = ($type->first())->id;
+                }
+            } else {
+                return back();
+            }
+        }
+
         (new Product($data))->save();
 
         return back();
@@ -40,9 +54,31 @@ class ProductController extends AdminBaseController
 
         if ($data['color_id'] === '0') {
             if ($data['color']) {
-                Color::create(['name' => $data['color']]);
-                $data['color_id'] = Color::where('name', $data['color']);
+                if ((Color::where('name', $data['color'])->count() === 0)) {
+                    Color::create(['name' => $data['color']]);
+                    $data['color_id'] = (Color::where('name', $data['color'])->first())->id;
+                } else {
+                    return back();
+                }
+            } else {
+                return back();
             }
+        }
+
+        $check = (ProductDetails::where([
+            ['product_id', '=', $data['product_id']],
+            ['color_id', '=', $data['color_id']]
+        ]));
+
+        if ($check->count() != 0) {
+            $check->update([
+               'product_id' => $data['product_id'],
+               'color_id' => $data['color_id'],
+               'count' => $data['count'],
+               'image' => $data['image']
+            ]);
+
+            return back();
         }
 
         (new ProductDetails($data))->save();
@@ -79,6 +115,15 @@ class ProductController extends AdminBaseController
         $data = $request->except('_token');
 
         Product::find($id)->update($data);
+
+        return back();
+    }
+
+    public function deleteDetail($id)
+    {
+        if ($detail = ProductDetails::find($id)) {
+            $detail->delete();
+        }
 
         return back();
     }

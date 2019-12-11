@@ -1,6 +1,17 @@
 @extends('admin.admin')
 
 @section('admin-content')
+    @if ($errors->first())
+        <div class="account-info-wrapper">
+            <div class="alert alert-danger text-center">
+                @foreach ($errors->all() as $error)
+                    <div>
+                        {{$error}}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
     <div class="panel panel-default">
         <div class="panel-heading">
             <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Список товара</a></h5>
@@ -59,17 +70,6 @@
         <div id="my-account-2" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="billing-information-wrapper">
-                    @if ($errors->first())
-                        <div class="account-info-wrapper">
-                            <div class="alert alert-danger text-center">
-                                @foreach ($errors->all() as $error)
-                                    <div>
-                                        {{$error}}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
                     <form action="{{ route('admin.product.add') }}" method="POST">
                         @csrf
                         <div class="row">
@@ -95,12 +95,20 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-select">
-                                    <label for="">Тип</label>
-                                    <select name="type_id">
-                                        @foreach($types as $type)
-                                            <option value="{{ $type['id'] }}">{{ $type['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="">Выберите тип или введите новый</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <select name="type_id">
+                                                <option value="0" selected></option>
+                                                @foreach($types as $type)
+                                                    <option value="{{ $type['id'] }}">{{ $type['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 billing-info">
+                                            <input type="text" id="type" name="type" value="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
@@ -138,22 +146,11 @@
             </div>
         </div>
         <div class="panel-heading">
-            <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3">Добавить новый цвет</a></h5>
+            <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3">Добавить новый цвет или изменить существующий</a></h5>
         </div>
         <div id="my-account-3" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="billing-information-wrapper">
-                    @if ($errors->first())
-                        <div class="account-info-wrapper">
-                            <div class="alert alert-danger text-center">
-                                @foreach ($errors->all() as $error)
-                                    <div>
-                                        {{$error}}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
                     <form action="{{ route('admin.product.detail') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -162,7 +159,7 @@
                                     <label for="">Продукт</label>
                                     <select name="product_id">
                                         @foreach($products as $product)
-                                            <option value="{{ $product['id'] }}">{{ $product['name'] }}</option>
+                                            <option value="{{ $product['id'] }}">{{$product->brand->name}} {{ $product['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

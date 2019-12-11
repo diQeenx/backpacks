@@ -112,7 +112,10 @@
                                                 <td>{{ $detail->count }}</td>
                                                 <td></td>
                                                 <td></td>
-                                                <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
+                                                <form action="{{ route('admin.product.detail.delete', [$detail->id]) }}" method="POST">
+                                                    @csrf
+                                                    <td class="product-remove"><button class="submit-button" type="submit" style="background-color: white; border: 0;"><i class="ti-trash" onclick=""></i></button></td>
+                                                </form>
                                             </tr>
                                         @endforeach
                                     </tbody>

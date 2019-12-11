@@ -2,6 +2,7 @@
 
 namespace App\Models\Sale;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -19,5 +20,10 @@ class Sale extends Model
     public function products()
     {
         return $this->hasMany(SaleProduct::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

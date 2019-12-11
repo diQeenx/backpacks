@@ -4,11 +4,7 @@
     <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-color: gray">
         <div class="container">
             <div class="breadcrumb-content text-center">
-                <h2>Shop Page</h2>
-                <ul>
-                    <li><a href="index.html">home</a></li>
-                    <li class="active">Shop Page</li>
-                </ul>
+                <h2>Каталог товаров</h2>
             </div>
         </div>
     </div>
@@ -19,12 +15,6 @@
                     <div class="shop-topbar-wrapper">
                         <div class="product-sorting-wrapper">
                             <div class="product-show shorting-style">
-                                <label>Showing <span>1-20</span> of <span>100</span> Results</label>
-                                <select>
-                                    <option value="">12</option>
-                                    <option value="">24</option>
-                                    <option value="">36</option>
-                                </select>
                             </div>
                         </div>
                         <div class="grid-list-options">

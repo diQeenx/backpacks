@@ -143,10 +143,17 @@
                                             <input type="radio" checked="" value="no_card" name="payment">
                                             <label>Наличные / Оплата по почте</label>
                                         </div>
-                                        <div class="single-ship">
-                                            <input type="radio" value="card" name="payment">
-                                            <label>Кредитная карта (сохраненная)</label>
-                                        </div>
+                                        @if ($user->detail->card_id)
+                                            <div class="single-ship">
+                                                <input type="radio" value="card" name="payment">
+                                                <label>Кредитная карта (сохраненная)</label>
+                                            </div>
+                                        @else
+                                            <div class="single-ship">
+                                                <input type="radio" disabled>
+                                                <label>Чтобы выбрать безналичный способ оплаты привяжите банковскую карту к аккаунту</label>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

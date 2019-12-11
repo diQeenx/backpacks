@@ -26,7 +26,8 @@ class Product extends FormRequest
         return [
             'category_id' => ['required', 'numeric', 'exists:categories,id'],
             'brand_id' => ['required', 'numeric', 'exists:brands,id'],
-            'type_id' => ['required', 'numeric', 'exists:types,id'],
+            'type_id' => ['nullable'],
+            'type' => 'nullable',
             'name' => 'required|string|max:50',
             'size' => 'required|string',
             'price' => 'required|numeric',

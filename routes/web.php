@@ -40,7 +40,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::post('cart/{id}', 'CartController@deleteDetail')->name('cart.delete');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin'], function () {
     Route::get('index', 'AdminController@index')->name('admin.index');
 
     Route::get('categories', 'CategoryController@index')->name('admin.category');
@@ -57,6 +57,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('detail', 'ProductController@addDetail')->name('admin.product.detail');
     Route::get('products/{id}/info', 'ProductController@info')->name('admin.product.info');
     Route::post('products/{id}/update', 'ProductController@productUpdate')->name('admin.product.update');
+    Route::post('products/{id}/delete', 'ProductController@deleteDetail')->name('admin.product.detail.delete');
+
+    Route::get('sales', 'PurchaseController@index')->name('admin.sales');
+    Route::get('sales/{id}/info', 'PurchaseController@info')->name('admin.sale.info');
+    Route::get('sales/user/{id}', 'PurchaseController@saleByUser')->name('admin.sale.user');
 });
 
 
